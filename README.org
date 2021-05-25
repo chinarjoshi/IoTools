@@ -1,4 +1,0 @@
-#+title: Polar Rover
-#+startup: fold
-
-Polar Rover
