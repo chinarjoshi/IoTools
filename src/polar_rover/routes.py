@@ -1,10 +1,10 @@
 from polar_rover import app
-from flask import abort, jsonify, render_template, request, url_for
+from flask import abort, jsonify, render_template, request, url_for, Response
 
 import csv
 from datetime import datetime
 
-DATABASE_ROUTE = 'data.csv'
+DATABASE_ROUTE = './data.csv'
 
 def user_validation(key_in):
     return key_in == KEY
@@ -20,7 +20,7 @@ def about():
     return render_template('about.html', title='About')
 
 @app.route("/data")
-def data():
+def data() -> Response:
     """
     Read the data from the cvs file.
 
