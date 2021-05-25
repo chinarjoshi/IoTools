@@ -1,27 +1,26 @@
-from datetime import datetime
-from flask import abort, Flask, jsonify, render_template, request
+from polar_rover import app
+from flask import abort, jsonify, render_template, request, url_for
 
 import csv
+from datetime import datetime
 
+DATABASE_ROUTE = 'data.csv'
 
 def user_validation(key_in):
-    if key_in == KEY:
-        return True
-    return False
-
+    return key_in == KEY
 
 KEY = "6,wD-Ak]^wzWe@G"  # expected key for verification
 
-app = Flask(__name__)
-
-
-@app.route("/")
+@app.route('/')
 def home():
     return render_template("home.html")
 
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About')
 
-@app.route("/data", methods=["GET"])
-def get_data():
+@app.route("/data")
+def data():
     """
     Read the data from the cvs file.
 
@@ -34,7 +33,7 @@ def get_data():
     bme_humidity = []
     bme_altitudes = []
     bme_airpress = []
-    with open("static/database/data.csv") as csv_file:
+    with open(DATABASE_ROUTE) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         line_count = 0
         for row in csv_reader:
@@ -91,7 +90,7 @@ def update():
         "%d/%m/%Y %H:%M:%S"
     )  # get the current time of the data being pushed
 
-    with open("static/database/data.csv", "a") as csv_file:
+    with open(DATABASE_ROUTE, 'a') as csv_file:
         csv_file.write(
             "{}, {}, {}, {}, {}, {}\n".format(
                 timestamp, probeTemp, bmeTemp, bmeHumid, bmeAlt, bmeAir
@@ -116,7 +115,3 @@ def reset():
             "Timestamp,Probe Temperature [C],BME Temperature [C],BME Humidity [%],BME Altitude [m],BME Air Pressure [hPA]\n"
         )
     return "Successfully reset the data.", 201
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

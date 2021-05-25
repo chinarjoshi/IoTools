@@ -1,6 +1,7 @@
 const url = "http://127.0.0.1:5000/data";
 
 $(".dropdown-item").click(function(){
+    console.log('hello');
     var dataName = $(this).text();
     var selected = dataName;
     var units;
@@ -22,7 +23,7 @@ $(".dropdown-item").click(function(){
         selected = "bmeAlt";
         units = " [Meter]";
         color = "#61E294"
-    }else {
+    } else {
         selected = "bmeAir";
         units = " [hPa]";
         color = "#080708";
@@ -63,22 +64,3 @@ $(".dropdown-item").click(function(){
         });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

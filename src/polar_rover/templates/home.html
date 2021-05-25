@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<canvas id="myChart" width=200 height=200></canvas>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Data
+    </button>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item">Probe Temperature</a>
+        <a class="dropdown-item">BME Temperature</a>
+        <a class="dropdown-item">Humidity</a>
+        <a class="dropdown-item">Air Pressures</a>
+        <a class="dropdown-item">Altitude</a>
+    </div>
+</div>
+
+{% endblock content %} 
