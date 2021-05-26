@@ -27,6 +27,11 @@ def about():
     """About page."""
     return render_template('about.html', title='About')
 
+@polar_rover.app.route('/instructions')
+def instructions():
+    """Instructions page."""
+    return render_template('instructions.html', title='Instructions')
+
 @polar_rover.app.route('/data')
 def data() -> Response:
     """Read the data from the cvs file.
