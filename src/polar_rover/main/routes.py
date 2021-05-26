@@ -1,10 +1,8 @@
 import importlib.resources as pkg_resources
 from dataclasses import dataclass
+from flask import render_template, request, Blueprint
 
-import pandas as pd
-from flask import Response, abort, jsonify, render_template, request
-
-import polar_rover
+main = Blueprint('main', __name__)
 
 
 @dataclass(frozen=True)
@@ -17,28 +15,25 @@ class Output():
 CSV_STREAM = pkg_resources.open_text(polar_rover, 'data.csv')
 KEY = '6,wD-Ak]^wzWe@G'  # expected key for verification
 
-@polar_rover.app.route('/')
-@polar_rover.app.route('/home')
+@main.route('/')
+@main.route('/home')
 def home():
     """Home page."""
     return render_template('home.html')
 
 
-@polar_rover.app.route('/about')
+@main.route('/about')
 def about():
     """About page."""
     return render_template('about.html', title='About')
 
 
-@polar_rover.app.route('/instructions')
+@main.route('/instructions')
 def instructions():
     """Instructions page."""
     return render_template('instructions.html', title='Instructions')
 
-@polar_rover.app.route('/register')
-def register():
-
-@polar_rover.app.route('/data')
+@main.route('/data')
 def data() -> Response:
     """Read the data from the cvs file.
 
@@ -48,7 +43,7 @@ def data() -> Response:
     return jsonify({'data': pd.read_csv(CSV_STREAM).to_dict()})
 
 
-@polar_rover.app.route('/update', methods=['POST'])
+@main.route('/update', methods=['POST'])
 def update() -> Output:
     """Update csv values from request."""
     values = {}
@@ -62,7 +57,7 @@ def update() -> Output:
     return Output('Successfully reset the data.', 201)
 
 
-@polar_rover.app.route('/reset', methods=['POST'])
+@main.route('/reset', methods=['POST'])
 def reset() -> Output:
     """Reset database."""
     if request.form.get('key') != KEY:
