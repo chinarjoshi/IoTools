@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Blueprint, Response, abort, render_template, request, jsonify
-from polar_rover.main.utils import CSV_ROUTE, KEY, Output
+from polar_rover.main.utils import CSV_STREAM, KEY, Output
 
 main = Blueprint('main', __name__)
 
@@ -31,7 +31,7 @@ def data() -> Response:
     Returns
         data_json (Response): json containing the information of the file
     """
-    return jsonify({'data': pd.read_csv(CSV_ROUTE).to_dict()})
+    return jsonify({'data': pd.read_csv(CSV_STREAM).to_dict()})
 
 
 @main.route('/update', methods=['POST'])
@@ -43,7 +43,7 @@ def update() -> Output:
             values[field] = request.form[field]
         except:
             abort(404)
-    with open(CSV_ROUTE, 'a') as csv_file:
+    with open(CSV_STREAM, 'a') as csv_file:
         csv_file.write(', '.join(values.items()))
     return Output('Successfully reset the data.', 201)
 
@@ -53,6 +53,6 @@ def reset() -> Output:
     """Reset database."""
     if request.form.get('key') != KEY:
         abort(403)
-    with open(CSV_ROUTE, 'w') as csv_file:
+    with open(CSV_STREAM, 'w') as csv_file:
         csv_file.write('Timestamp,Probe Temperature [C],BME Temperature [C],BME Humidity [%],BME Altitude [m],BME Air Pressure [hPA]\n')
     return Output('Successfully reset the data.', 201)
