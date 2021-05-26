@@ -1,25 +1,25 @@
 import pandas as pd
-from flask import Blueprint, Response, render_template, request, abort
-from polar_rover.main.utils import KEY, CSV_ROUTE, Output
+from flask import Blueprint, Response, abort, render_template, request, jsonify
+from polar_rover.main.utils import CSV_ROUTE, KEY, Output
 
 main = Blueprint('main', __name__)
 
 
 @main.route('/')
 @main.route('/home')
-def home():
+def home() -> Response:
     """Home page."""
     return render_template('home.html')
 
 
 @main.route('/about')
-def about():
+def about() -> Response:
     """About page."""
     return render_template('about.html', title='About')
 
 
 @main.route('/instructions')
-def instructions():
+def instructions() -> Response:
     """Instructions page."""
     return render_template('instructions.html', title='Instructions')
 
