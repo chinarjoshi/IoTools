@@ -1,19 +1,8 @@
-import importlib.resources as pkg_resources
-from dataclasses import dataclass
-from flask import render_template, request, Blueprint
+from flask import Blueprint, Response, render_template, request
+from polar_rover.main.utils import Output, CSV_ROUTE, KEY
 
 main = Blueprint('main', __name__)
 
-
-@dataclass(frozen=True)
-class Output():
-    """Inmutable class for containing return message and code."""
-    message: str
-    return_code: int
-
-# CSV file is imported from package route as file stream
-CSV_STREAM = pkg_resources.open_text(polar_rover, 'data.csv')
-KEY = '6,wD-Ak]^wzWe@G'  # expected key for verification
 
 @main.route('/')
 @main.route('/home')
@@ -32,6 +21,7 @@ def about():
 def instructions():
     """Instructions page."""
     return render_template('instructions.html', title='Instructions')
+
 
 @main.route('/data')
 def data() -> Response:

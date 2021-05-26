@@ -62,11 +62,13 @@ TODO
 
 ### Built With
 
-* [Flask](https://www.pygame.org/news)
-* [ESP32](https://pygame-menu.readthedocs.io/en/3.5.8/)
+* [Flask](https://flask.palletsprojects.com)
 * [jQuery](https://jquery.com)
 * [Chart.js](https://chartjs.org)
-
+* [WTForms](https://wtforms.readthedocs.io)
+* [SQLAlchemy](https://sqlalchemy.org)
+* [SQLite3](https://sqlite.org)
+* [ESP32](https://espressif.com/en/products/socs/esp32)
 
 ## Getting Started
 

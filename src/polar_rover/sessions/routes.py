@@ -4,9 +4,9 @@ from polar_rover import db, bcrypt
 from polar_rover.models import Session, Data
 from polar_rover.sessions.forms import LoginForm, RegistrationForm
 
-users = Blueprint('users', __name__)
+sessions = Blueprint('sessions', __name__)
 
-@users.route('/login', methods=['GET', 'POST'])
+@sessions.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -21,7 +21,7 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-@users.route('/register', methods=['GET', 'POST'])
+@sessions.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
