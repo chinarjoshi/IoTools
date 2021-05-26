@@ -12,7 +12,7 @@
     {% if title %}
         <title>Polar Rover - {{ title }}</title>
     {% else %}
-        <title>Polar Rover</title>
+        <title>Polar Rover Utility Server</title>
     {% endif %}
 </head>
 <body>
@@ -55,9 +55,9 @@
             <h3>How to Use</h3>
             <p class='text-muted'>Tutorial and Instructions
               <ul class="list-group">
-                <a class="list-group-item list-group-item-light" href="{{ url_for('instructions') }}">ESP32</li>
-                <a class="list-group-item list-group-item-light" href="{{ url_for('instructions') }}">Connecting to server</li>
-                <a class="list-group-item list-group-item-light" href="{{ url_for('instructions') }}">Understanding the data</li>
+                  <li class="list-group-item list-group-item-light" href="{{ url_for('instructions') }}">ESP32</li>
+                  <li class="list-group-item list-group-item-light" href="{{ url_for('instructions') }}">Connecting to server</li>
+                  <li class="list-group-item list-group-item-light" href="{{ url_for('instructions') }}">Understanding the data</li>
               </ul>
             </p>
           </div>
@@ -70,5 +70,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="static/js/charts.js"></script>
 </body>
 </html>

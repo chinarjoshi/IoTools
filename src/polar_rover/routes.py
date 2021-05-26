@@ -18,19 +18,25 @@ CSV_STREAM = pkg_resources.open_text(polar_rover, 'data.csv')
 KEY = '6,wD-Ak]^wzWe@G'  # expected key for verification
 
 @polar_rover.app.route('/')
+@polar_rover.app.route('/home')
 def home():
     """Home page."""
     return render_template('home.html')
+
 
 @polar_rover.app.route('/about')
 def about():
     """About page."""
     return render_template('about.html', title='About')
 
+
 @polar_rover.app.route('/instructions')
 def instructions():
     """Instructions page."""
     return render_template('instructions.html', title='Instructions')
+
+@polar_rover.app.route('/register')
+def register():
 
 @polar_rover.app.route('/data')
 def data() -> Response:
@@ -40,6 +46,7 @@ def data() -> Response:
         data_json (Response): json containing the information of the file
     """
     return jsonify({'data': pd.read_csv(CSV_STREAM).to_dict()})
+
 
 @polar_rover.app.route('/update', methods=['POST'])
 def update() -> Output:
@@ -53,6 +60,7 @@ def update() -> Output:
     with open(CSV_STREAM, 'a') as csv_file:
         csv_file.write(', '.join(values.items()))
     return Output('Successfully reset the data.', 201)
+
 
 @polar_rover.app.route('/reset', methods=['POST'])
 def reset() -> Output:
