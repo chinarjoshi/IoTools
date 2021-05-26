@@ -4,6 +4,8 @@ import pandas as pd
 from flask import Response, abort, jsonify, render_template, request
 
 from polar_rover import app
+import importlib.resources as pkg_resources
+import polar_rover
 
 
 @dataclass(frozen=True)
@@ -12,7 +14,7 @@ class Output():
     message: str
     return_code: int
 
-DATABASE_ROUTE = 'data.csv'
+DATABASE_ROUTE = pkg_resources.open_text(polar_rover, 'data.csv')
 KEY = '6,wD-Ak]^wzWe@G'  # expected key for verification
 
 @app.route('/')
