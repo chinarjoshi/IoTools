@@ -1,6 +1,6 @@
 from flask import (Blueprint, Response, flash, redirect, render_template,
                    url_for)
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from polar_rover import bcrypt, db
 from polar_rover.models import Session
 from polar_rover.sessions.forms import LoginForm, RegistrationForm
@@ -21,6 +21,12 @@ def login() -> Response:
         else:
             flash('Login Unsuccessful', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+
+@sessions.route('/logout')
+def logout() -> Response:
+    logout_user()
+    return redirect(url_for('main.home'))
 
 
 @sessions.route('/register', methods=['GET', 'POST'])
