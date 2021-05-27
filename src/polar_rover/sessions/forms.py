@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length
 
 
 class LoginForm(FlaskForm):
-    name = StringField('Session ID',
+    username = StringField('Session ID',
                            validators=[DataRequired(), Length(min=5, max=50)])
     password = PasswordField('Session Password',
                            validators=[DataRequired(), Length(min=3, max=30)])
@@ -15,13 +15,14 @@ class LoginForm(FlaskForm):
 
 
 class RegistrationForm(FlaskForm):
-    name = StringField('Session ID',
+    username = StringField('Session ID',
                            validators=[DataRequired(), Length(min=5, max=50)])
     password = PasswordField('Session Password',
                            validators=[DataRequired(), Length(min=3, max=30)])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), Length(min=3, max=30)])
     submit = SubmitField('Register a Session')
+    remember = BooleanField('Remember Me')
 
     def validate_name(self, name):
         session = Session.query.filter_by(name=name.data).first()
