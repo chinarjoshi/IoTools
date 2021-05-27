@@ -7,7 +7,7 @@ try:
 except ImportError:
     import importlib_resources as pkg_resources
 
-CSV_ROUTE = pkg_resources.open_text(polar_rover, 'data.csv')
+CSV_STREAM = pkg_resources.open_text(polar_rover, 'data.csv')
 KEY = '6,wD-Ak]^wzWe@G'  # expected key for verification
 
 @dataclass(frozen=True)
