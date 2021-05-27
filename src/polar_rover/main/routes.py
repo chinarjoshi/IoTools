@@ -1,5 +1,6 @@
-import pandas as pd
-from flask import Blueprint, Response, abort, render_template, request, jsonify
+import csv
+
+from flask import Blueprint, Response, abort, jsonify, render_template, request
 from polar_rover.main.utils import CSV_STREAM, KEY, Output
 
 main = Blueprint('main', __name__)
@@ -25,27 +26,70 @@ def instructions() -> Response:
 
 
 @main.route('/data')
-def data() -> Response:
-    """Read the data from the cvs file.
-
-    Returns
-        data_json (Response): json containing the information of the file
+def get_data():
     """
-    return jsonify({'data': pd.read_csv(CSV_STREAM).to_dict()})
-
+    Read the data from the cvs file.
+    
+    Returns 
+        data_json (json) : a json containing the information of the file
+    """
+    times = []
+    probe_temps = []
+    bme_temps = []
+    bme_humidity = []
+    bme_altitudes = []
+    bme_airpress = []
+    with open(CSV_STREAM) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            if line_count != 0:
+                times.append(row[0])
+                probe_temps.append(float(row[1]))
+                bme_temps.append(float(row[2]))
+                bme_humidity.append(float(row[3]))
+                bme_altitudes.append(float(row[4]))
+                bme_airpress.append(float(row[5]))
+            line_count += 1
+    data = {'timestamps' : times, 'probeTemp' : probe_temps, 'bmeTemp' : bme_temps,
+            'bmeHumid' : bme_humidity, 'bmeAlt': bme_altitudes, 'bmeAir': bme_airpress}
+    data_json = jsonify({'data' : data})
+    return data_json
 
 @main.route('/update', methods=['POST'])
-def update() -> Output:
-    """Update csv values from request."""
-    values = {}
-    for field in 'key', 'probeTemp', 'bmeTemp', 'bmeHumid', 'bmeAlt', 'bmeAir':
-        try:
-            values[field] = request.form[field]
-        except:
-            abort(404)
+def update():
+    r = request.form
+    # Validate the user
+    if r.get('key'):
+        if not user_validation(r.get('key')):
+            print("Couldn't validate user")
+            abort(403)
+    if r.get('probeTemp'):
+        probeTemp = r.get('probeTemp')
+    else:
+        abort(404)
+    if r.get('bmeTemp'):
+        bmeTemp = r.get('bmeTemp')
+    else:
+        abort(404)
+    if r.get('bmeHumid'):
+        bmeHumid = r.get('bmeHumid')
+    else:
+        abort(404)
+    if r.get('bmeAlt'):
+        bmeAlt = r.get('bmeAlt')
+    else:
+        abort(404)
+    if r.get('bmeAir'):
+        bmeAir = r.get('bmeAir')
+    else:
+        abort(404)
+    timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S") # get the current time of the data being pushed
+
     with open(CSV_STREAM, 'a') as csv_file:
-        csv_file.write(', '.join(values.items()))
-    return Output('Successfully reset the data.', 201)
+        csv_file.write("{}, {}, {}, {}, {}, {}\n".format(timestamp, probeTemp, bmeTemp, bmeHumid, bmeAlt, bmeAir))
+    
+    return Output("Successfully updated the data.", 201)
 
 
 @main.route('/reset', methods=['POST'])
