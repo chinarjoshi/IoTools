@@ -1,3 +1,8 @@
+
+from testing.test import test
+
+test()
+
 from rover_polar import create_app
 
 app = create_app()
