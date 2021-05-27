@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from polar_rover import create_app
 
 app = create_app()
