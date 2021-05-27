@@ -1,9 +1,6 @@
 import os
-with open('testing.txt', 'w') as file:
-    file.write('working')
 
-    path = os.path.dirname(os.path.realpath(__file__))
-    file.write(f'{path}\n')
+print(os.path.dirname(os.path.realpath(__file__)))
 
 
 from rover_polar import create_app
