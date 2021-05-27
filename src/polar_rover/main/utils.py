@@ -1,13 +1,10 @@
+import os
 from dataclasses import dataclass
 
-import polar_rover
 
-try:
-    import importlib.resources as pkg_resources
-except ImportError:
-    import importlib_resources as pkg_resources
+dir, _ = os.path.split(__file__)
 
-CSV_STREAM = pkg_resources.open_text(polar_rover, 'data.csv')
+CSV_STREAM = os.path.join(dir, '..', 'data.csv')
 KEY = '6,wD-Ak]^wzWe@G'  # expected key for verification
 
 @dataclass(frozen=True)
