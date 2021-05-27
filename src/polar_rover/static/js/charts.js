@@ -1,38 +1,35 @@
-const url = 'http://127.0.0.1:5000/data';
+const url = "http://127.0.0.1:5000/data";
 
-$('.dropdown-item').click(function() {
+$(".dropdown-item").click(function() {
     let selected = $(this).text();
     let units;
     let color;
     // Find which data was selected
-    if (selected === 'Probe Temperature') {
-        selected = 'probeTemp';
-        units = ' [Celsius]';
-        color = '#df2935';
-    } else if (selected === 'BME Temperature') {
-        selected = 'bmeTemp';
-        units = ' [Celsius]';
-        color = '#df2935'
-    } else if (selected === 'Humidity') {
-        selected = 'bmeHumid';
-        units = ' [%]';
-        color = '#3772ff'
-    } else if (selected === 'Altitude') {
-        selected = 'bmeAlt';
-        units = ' [Meter]';
-        color = '#61E294'
+    if (selected === "Probe Temperature") {
+        selected = "probeTemp";
+        units = " [Celsius]";
+        color = "#df2935";
+    } else if (selected ==="BME Temperature") {
+        selected = "bmeTemp";
+        units = " [Celsius]";
+        color = "#df2935"
+    } else if (selected === "Humidity") {
+        selected = "bmeHumid";
+        units = " [%]";
+        color = "#3772ff"
+    } else if (selected === "Altitude") {
+        selected = "bmeAlt";
+        units = " [Meter]";
+        color = "#61E294"
     } else {
-        selected = 'bmeAir';
-        units = ' [hPa]';
-        color = '#080708';
+        selected = "bmeAir";
+        units = " [hPa]";
+        color = "#080708";
     }
-    $(this).parents('.dropdown').find('.btn').html(dataName);
+    $(this).parents(".dropdown").find('.btn').html(dataName);
     // Find the dataset based on the type of data selected
-    $.getJSON(url, function(data) {
+    $.getJSON(url, function(data){
         // Update the padding for the jumbotron
-        let jumbo = document.getElementById('jumbo');
-        jumbo.style.paddingTop = '2.5%';
-        jumbo.style.paddingBottom = '.5%';
         // Get the correct context to put the graph in
         let ctx = document.getElementById('myChart').getContext('2d');
         ctx.canvas.width = screen.availWidth*.58;
