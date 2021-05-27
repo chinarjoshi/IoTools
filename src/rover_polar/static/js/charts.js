@@ -37,6 +37,13 @@ $(".dropdown-item").click(function() {
         ctx.canvas.height = screen.availHeight*.58;
         Chart.defaults.global.defaultFontSize = 16;
         // Create the graph based on the current data
+
+        if (dataName = 'Probe Temperature' || 'BME Temperature') {
+            document.querySelector('#increasing').innerHTML = `Temperature ${data.data.increasing}`
+        } else {
+            document.querySelector('#increasing').innerHTML = 'none'
+        }
+
         let myChart = new Chart(ctx, {
         type: 'line',
         data: {

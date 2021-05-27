@@ -1,7 +1,8 @@
 import csv
+import pandas as pd
 
 from flask import Blueprint, Response, abort, jsonify, render_template, request
-from polar_rover.main.utils import CSV_STREAM, KEY, Output
+from rover_polar.main.utils import CSV_STREAM, KEY, Output, temperature_increasing
 
 main = Blueprint('main', __name__)
 
@@ -52,9 +53,12 @@ def get_data():
                 bme_airpress.append(float(row[5]))
             line_count += 1
     data = {'timestamps' : times, 'probeTemp' : probe_temps, 'bmeTemp' : bme_temps,
-            'bmeHumid' : bme_humidity, 'bmeAlt': bme_altitudes, 'bmeAir': bme_airpress}
+            'bmeHumid' : bme_humidity, 'bmeAlt': bme_altitudes, 'bmeAir': bme_airpress,
+            'increasing': temperature_increasing(CSV_STREAM)}
     data_json = jsonify({'data' : data})
+
     return data_json
+
 
 @main.route('/update', methods=['POST'])
 def update():

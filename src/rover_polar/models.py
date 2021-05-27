@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 
-from polar_rover import db, login_manager
+from rover_polar import db, login_manager
 
 
 @login_manager.user_loader

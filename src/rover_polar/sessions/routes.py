@@ -1,9 +1,9 @@
 from flask import (Blueprint, Response, flash, redirect, render_template,
                    url_for)
 from flask_login import current_user, login_user, logout_user
-from polar_rover import bcrypt, db
-from polar_rover.models import Session
-from polar_rover.sessions.forms import LoginForm, RegistrationForm
+from rover_polar import bcrypt, db
+from rover_polar.models import Session
+from rover_polar.sessions.forms import LoginForm, RegistrationForm
 
 sessions = Blueprint('sessions', __name__)
 
