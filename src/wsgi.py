@@ -1,12 +1,10 @@
 import os
+import importlib
 
 print('\n\n\nWORKING\n\n\n')
 print(os.path.dirname(os.path.realpath(__file__)))
 
 
-from rover_polar import create_app
-
-app = create_app()
-
+app = importlib.import_module('rover_polar')
 if __name__ == '__main__':
-    app.run(debug=True)
+    getattr(app, 'create_app')()
