@@ -10,7 +10,7 @@ def load_user(user_id):
 
 class Session(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), unique=True, nullable=False)
+    username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     # One (session) to many (datapoints) relationship
     data = db.relationship('Data', lazy=True)
