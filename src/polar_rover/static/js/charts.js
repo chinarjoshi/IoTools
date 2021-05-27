@@ -2,6 +2,7 @@ const url = "http://127.0.0.1:5000/data";
 
 $(".dropdown-item").click(function() {
     let selected = $(this).text();
+    let dataName = selected;
     let units;
     let color;
     // Find which data was selected
