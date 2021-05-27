@@ -1,8 +1,14 @@
+print('\n\n\nWORKING 1\n\n\n')
 from flask import Flask
+print('\n\n\nWORKING 2\n\n\n')
 from flask_sqlalchemy import SQLAlchemy
+print('\n\n\nWORKING 2\n\n\n')
 from flask_login import LoginManager
+print('\n\n\nWORKING 3\n\n\n')
 from flask_bcrypt import Bcrypt
+print('\n\n\nWORKING 4\n\n\n')
 from rover_polar.config import Config
+print('\n\n\nWORKING 5\n\n\n')
 
 
 db = SQLAlchemy()
