@@ -1,7 +1,4 @@
-
-print('\n\n\working\n\n\n')
-from rover_polar.init import create_app
-
+from rover_polar import create_app
 
 app = create_app()
 
