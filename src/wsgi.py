@@ -1,11 +1,9 @@
 import os
-dir, _ = os.path.split(__file__)
+with open('testing.txt', 'w') as file:
+    file.write('working')
 
-file_path = os.path.join(dir, '..', 'Procfile')
-with open(file_path) as file:
-    file.read()
-
-
+    path = os.path.dirname(os.path.realpath(__file__))
+    file.write(f'{path}\n')
 
 
 from rover_polar import create_app
