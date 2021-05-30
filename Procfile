@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath src wsgi:app
+web: gunicorn --pythonpath src wsgi:polar-rover
