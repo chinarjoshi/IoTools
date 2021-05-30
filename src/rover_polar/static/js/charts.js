@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:5000/data";
+const url = "http://polar-rover.herokuapp.com/data";
 
 $(".dropdown-item").click(function() {
     let selected = $(this).text();
