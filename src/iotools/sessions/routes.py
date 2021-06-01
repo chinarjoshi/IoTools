@@ -8,8 +8,8 @@ from iotools.sessions.forms import LoginForm, RegistrationForm
 sessions = Blueprint('sessions', __name__)
 
 
-@sessions.route('/login', methods=['GET', 'POST'])
-def login() -> Response:
+@sessions.route('/enter', methods=['GET', 'POST'])
+def enter() -> Response:
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = LoginForm()
@@ -23,14 +23,14 @@ def login() -> Response:
     return render_template('login.html', title='Login', form=form)
 
 
-@sessions.route('/logout')
-def logout() -> Response:
+@sessions.route('/exit')
+def exit() -> Response:
     logout_user()
     return redirect(url_for('main.home'))
 
 
-@sessions.route('/register', methods=['GET', 'POST'])
-def register() -> Response:
+@sessions.route('/create', methods=['GET', 'POST'])
+def create() -> Response:
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = RegistrationForm()
