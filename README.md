@@ -13,18 +13,18 @@
     <img src="#" alt="Logo" width="95" height="95">
   </a>
 
-  <h1 align="center">Polar Rover</h1>
+  <h1 align="center">IOTools</h1>
 
   <p align="center">
     <br />
-    <a href="https://github.com/chinarjoshi/polar-rover"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/chinarjoshi/iotools"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#">View Demo</a>
     ·
-    <a href="https://github.com/chinarjoshi/polar-rover/issues">Report Bug</a>
+    <a href="https://github.com/chinarjoshi/iotools/issues">Report Bug</a>
     ·
-    <a href="https://github.com/chinarjoshi/polar-rover/issues">Request Feature</a>
+    <a href="https://github.com/chinarjoshi/iotools/issues">Request Feature</a>
   </p>
 </p>
 
@@ -79,25 +79,26 @@ __PUT THE SAME INFORMATION HERE_
 ## Getting Started
 
 ### Prerequisites
+Only for localhost usage
 
 * pip
   ```sh
-  pip install -r requirements.txt
+  pip install -r iotools/requirements.txt
   ```
 
 ### How to use
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/chinarjoshi/polar-rover
+   git clone https://github.com/chinarjoshi/iotools
    ```
 2. Install prerequisite packages
    ```sh
-   pip install -r requirements.txt
+   pip install -r iotools/requirements.txt
    ```
-4. Directly run the python file
+4. Run the flask entrypoint
    ```sh
-   python polar-rover/main.py
+   python3 iotools/src/wsgi.py
    ```
 
 <!-- USAGE EXAMPLES -->
@@ -105,12 +106,12 @@ __PUT THE SAME INFORMATION HERE_
 
 TODO
 
-_For more examples, please refer to the [Documentation](https://github.com/chinarjoshi/polar-rover)_
+_For more examples, please refer to the [Documentation](https://github.com/chinarjoshi/iotools)_
 
 <!-- ROADMAP -->
 ## Roadmap
 
-__See the [open issues](https://github.com/chinarjoshi/polar-rover/issues) for a list of proposed features (and known issues).__
+__See the [open issues](https://github.com/chinarjoshi/iotools/issues) for a list of proposed features (and known issues).__
 <br>
 
 <!-- CONTRIBUTING -->
@@ -135,7 +136,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Chinar Joshi - chinarjoshi7@gmail.com - [Linkedin](https://linkedin.com/in/chinar-joshi-905493207/)
 
-Project Link: [Github](https://github.com/chinarjoshi/polar-rover)
+Project Link: [Github](https://github.com/chinarjoshi/iotools)
 
 
 ## Acknowledgements
@@ -147,16 +148,16 @@ Project Link: [Github](https://github.com/chinarjoshi/polar-rover)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/chinarjoshi/polar-rover?style=for-the-badge
-[contributors-url]: https://github.com/chinarjoshi/polar-rover/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/chinarjoshi/polar-rover?style=for-the-badge
-[forks-url]: https://github.com/chinarjoshi/polar-rover/network/members
-[stars-shield]: https://img.shields.io/github/stars/chinarjoshi/polar-rover?style=for-the-badge
-[stars-url]: https://github.com/chinarjoshi/polar-rover/stargazers
-[issues-shield]: https://img.shields.io/github/issues/chinarjoshi/polar-rover?style=for-the-badge
-[issues-url]: https://github.com/chinarjoshi/polar-rover/issues
-[license-shield]: https://img.shields.io/github/license/chinarjoshi/polar-rover?style=for-the-badge
-[license-url]: https://github.com/chinarjoshi/polar-rover/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/chinarjoshi/iotools?style=for-the-badge
+[contributors-url]: https://github.com/chinarjoshi/iotools/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/chinarjoshi/iotools?style=for-the-badge
+[forks-url]: https://github.com/chinarjoshi/iotools/network/members
+[stars-shield]: https://img.shields.io/github/stars/chinarjoshi/iotools?style=for-the-badge
+[stars-url]: https://github.com/chinarjoshi/iotools/stargazers
+[issues-shield]: https://img.shields.io/github/issues/chinarjoshi/iotools?style=for-the-badge
+[issues-url]: https://github.com/chinarjoshi/iotools/issues
+[license-shield]: https://img.shields.io/github/license/chinarjoshi/iotools?style=for-the-badge
+[license-url]: https://github.com/chinarjoshi/iotools/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/chinar-joshi-905493207/
 [product-screenshot]: images/screenshot.png
