@@ -1,4 +1,4 @@
-const url = "http://polar-rover.herokuapp.com/data";
+const url = "http://iotools.herokuapp.com/data";
 
 $(".dropdown-item").click(function() {
     let selected = $(this).text();

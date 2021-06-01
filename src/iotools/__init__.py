@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
-from rover_polar.config import Config
+from iotools.config import Config
 
 
 db = SQLAlchemy()
@@ -20,8 +20,8 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     login_manager.init_app(app)
 
-    from rover_polar.sessions.routes import sessions
-    from rover_polar.main.routes import main
+    from iotools.sessions.routes import sessions
+    from iotools.main.routes import main
     app.register_blueprint(sessions)
     app.register_blueprint(main)
 
