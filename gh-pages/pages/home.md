@@ -8,7 +8,7 @@ header:
   overlay_filter: "0.5"
   overlay_image: assets/images/splash.jpg
   actions:
-    - label: "<i class='fas fa-download'></i>Download ZIP"
+    - label: "<i class='fas fa-download'></i> Download ZIP"
       url: "https://github.com/chinarjoshi"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: >
