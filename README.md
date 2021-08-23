@@ -57,13 +57,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-TODO
 
-__PUT THE SAME INFORMATION HERE_
-
-
-
-
+**WIP**
 
 
 ### Built With
