@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="#">
-    <img src="assets/logo.png" alt="Logo" width="95" height="95">
+    <img src="assets/logo.png" alt="Logo" width="394" height="159">
   </a>
 
   <h1 align="center">IOTools</h1>
