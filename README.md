@@ -16,6 +16,7 @@
   <h1 align="center">IOTools</h1>
 
   <p align="center">
+    Intuitive tools for managing internet of things applications
     <br />
     <a href="https://github.com/chinarjoshi/iotools"><strong>Explore the docs »</strong></a>
     <br />
